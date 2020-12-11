@@ -112,38 +112,40 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _onLogin() async {
-    // _email = _emcontroller.text;
-    // _password = _pscontroller.text;
-    // ProgressDialog pr = new ProgressDialog(context,
-    //     type: ProgressDialogType.Normal, isDismissible: false);
-    // pr.style(message: "Login...");
-    // await pr.show();
-    // http.post("https://slumberjer.com/foodninjav2/php/login_user.php", body: {
-    //   "email": _email,
-    //   "password": _password,
-    // }).then((res) {
-    //   print(res.body);
-    //   if (res.body == "success") {
-    //     Toast.show(
-    //       "Login Succes",
-    //       context,
-    //       duration: Toast.LENGTH_LONG,
-    //       gravity: Toast.TOP,
-    //     );
-    //     // Navigator.push(context,
-    //     // MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
-    //   } else {
-    //     Toast.show(
-    //       "Login failed",
-    //       context,
-    //       duration: Toast.LENGTH_LONG,
-    //       gravity: Toast.TOP,
-    //     );
-    //   }
-    // }).catchError((err) {
-    //   print(err);
-    // });
-    // await pr.hide();
+    _email = _emcontroller.text;
+    _password = _pscontroller.text;
+    ProgressDialog pr = new ProgressDialog(context,
+        type: ProgressDialogType.Normal, isDismissible: false);
+    pr.style(message: "Login...");
+    await pr.show();
+    http.post(
+        "https://foodloverv3.000webhostapp.com/foodninjav2/php/login_user.php",
+        body: {
+          "email": _email,
+          "password": _password,
+        }).then((res) {
+      print(res.body);
+      if (res.body == "success") {
+        Toast.show(
+          "Login Succes",
+          context,
+          duration: Toast.LENGTH_LONG,
+          gravity: Toast.TOP,
+        );
+        // Navigator.push(context,
+        // MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
+      } else {
+        Toast.show(
+          "Login failed",
+          context,
+          duration: Toast.LENGTH_LONG,
+          gravity: Toast.TOP,
+        );
+      }
+    }).catchError((err) {
+      print(err);
+    });
+    await pr.hide();
   }
 
   void _onRegister() {
